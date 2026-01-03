@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinate System Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="container">
+            <h1>Coordinate System Converter</h1>
+            <p class="subtitle">Transform coordinates between Cartesian, Cylindrical, and Spherical systems</p>
+            
+            <div class="selector">
+                <label for="coordinate-system">Input System</label>
+                <select id="coordinate-system">
+                    <option value="none">Choose a system...</option>
+                    <option value="cartesian">Cartesian (x, y, z)</option>
+                    <option value="cylindrical">Cylindrical (ρ, φ, z)</option>
+                    <option value="spherical">Spherical (r, θ, φ)</option>
+                </select>
+            </div>
+
+            <div id="input-cartesian" class="input-group-container hidden">
+                <div class="input-group-header">
+                    <span class="icon">📐</span>
+                    <h3>Cartesian Coordinates</h3>
+                </div>
+                <div class="input-row">
+                    <div class="input-field">
+                        <label for="cartesian-x">x</label>
+                        <input id="cartesian-x" type="number" step="any" placeholder="e.g., 1.0">
+                    </div>
+                    <div class="input-field">
+                        <label for="cartesian-y">y</label>
+                        <input id="cartesian-y" type="number" step="any" placeholder="e.g., 1.0">
+                    </div>
+                    <div class="input-field">
+                        <label for="cartesian-z">z</label>
+                        <input id="cartesian-z" type="number" step="any" placeholder="e.g., 1.0">
+                    </div>
+                </div>
+            </div>
+
+            <div id="input-cylindrical" class="input-group-container hidden">
+                <div class="input-group-header">
+                    <span class="icon">🛢️</span>
+                    <h3>Cylindrical Coordinates</h3>
+                </div>
+                <div class="input-row">
+                    <div class="input-field">
+                        <label for="cylindrical-rho">ρ (rho)</label>
+                        <input id="cylindrical-rho" type="number" step="any" placeholder="≥ 0, e.g., 1.0">
+                    </div>
+                    <div class="input-field">
+                        <label for="cylindrical-phi">φ (phi)°</label>
+                        <input id="cylindrical-phi" type="number" step="any" placeholder="0° to 360°, e.g., 45">
+                    </div>
+                    <div class="input-field">
+                        <label for="cylindrical-z">z</label>
+                        <input id="cylindrical-z" type="number" step="any" placeholder="e.g., 1.0">
+                    </div>
+                </div>
+            </div>
+
+            <div id="input-spherical" class="input-group-container hidden">
+                <div class="input-group-header">
+                    <span class="icon">🌐</span>
+                    <h3>Spherical Coordinates</h3>
+                </div>
+                <div class="input-row">
+                    <div class="input-field">
+                        <label for="spherical-r">r (radius)</label>
+                        <input id="spherical-r" type="number" step="any" placeholder="≥ 0, e.g., 1.0">
+                    </div>
+                    <div class="input-field">
+                        <label for="spherical-theta">θ (theta)°</label>
+                        <input id="spherical-theta" type="number" step="any" placeholder="0° to 180°, e.g., 45">
+                    </div>
+                    <div class="input-field">
+                        <label for="spherical-phi">φ (phi)°</label>
+                        <input id="spherical-phi" type="number" step="any" placeholder="0° to 360°, e.g., 45">
+                    </div>
+                </div>
+            </div>
+
+            <div id="error-message" class="error hidden"></div>
+
+            <button id="convert-btn" class="hidden">Convert Coordinates</button>
+
+            <div id="results" class="showcase hidden">
+                <div id="result-cartesian" class="result-card cartesian">
+                    <div class="result-icon">📐</div>
+                    <div class="result-content">
+                        <span class="system-label">Cartesian</span>
+                        <span class="coords"></span>
+                    </div>
+                </div>
+                <div id="result-cylindrical" class="result-card cylindrical">
+                    <div class="result-icon">🛢️</div>
+                    <div class="result-content">
+                        <span class="system-label">Cylindrical</span>
+                        <span class="coords"></span>
+                    </div>
+                </div>
+                <div id="result-spherical" class="result-card spherical">
+                    <div class="result-icon">🌐</div>
+                    <div class="result-content">
+                        <span class="system-label">Spherical</span>
+                        <span class="coords"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
